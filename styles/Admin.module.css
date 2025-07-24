@@ -1,0 +1,315 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  background: linear-gradient(120deg, #f8fafc 0%, #e3e9f7 100%);
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0 1.5rem 0;
+  border-bottom: 2px solid #e3e9f7;
+  margin-bottom: 2.5rem;
+  background: transparent;
+}
+
+.header h1 {
+  color: #222b45;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.createButton {
+  background: linear-gradient(90deg, #36d1c4 0%, #5b86e5 100%);
+  color: white;
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(91,134,229,0.08);
+  border: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.createButton:hover {
+  background: linear-gradient(90deg, #5b86e5 0%, #36d1c4 100%);
+  box-shadow: 0 4px 16px rgba(91,134,229,0.15);
+  text-decoration: none;
+}
+
+.main {
+  min-height: 80vh;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.statCard {
+  background: linear-gradient(120deg, #fff 60%, #e3e9f7 100%);
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(91,134,229,0.08);
+  text-align: center;
+  transition: box-shadow 0.2s;
+  border: 1px solid #e3e9f7;
+}
+
+.statCard:hover {
+  box-shadow: 0 8px 32px rgba(91,134,229,0.13);
+}
+
+.statCard h3 {
+  color: #5b86e5;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.statCard p {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #36d1c4;
+  margin: 0;
+}
+
+.faqList {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(91,134,229,0.07);
+}
+
+.faqList h2 {
+  margin-bottom: 1.5rem;
+  color: #222b45;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.faqTable {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.faqRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1rem;
+  border: 1px solid #e3e9f7;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f8fafc 60%, #e3e9f7 100%);
+  box-shadow: 0 1px 4px rgba(91,134,229,0.04);
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+.faqRow:hover {
+  box-shadow: 0 4px 16px rgba(91,134,229,0.10);
+  border: 1.5px solid #36d1c4;
+}
+
+.faqInfo {
+  flex: 1;
+}
+
+.faqInfo h3 {
+  color: #222b45;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.faqMeta {
+  display: flex;
+  gap: 1rem;
+  color: #5b86e5;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.faqActions {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.faqActions a {
+  padding: 0.5rem 1.2rem;
+  background: linear-gradient(90deg, #36d1c4 0%, #5b86e5 100%);
+  color: white;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(91,134,229,0.07);
+}
+
+.faqActions a:hover {
+  background: linear-gradient(90deg, #5b86e5 0%, #36d1c4 100%);
+  box-shadow: 0 2px 8px rgba(91,134,229,0.13);
+  text-decoration: none;
+}
+
+.deleteButton {
+  background: linear-gradient(90deg, #dc3545 0%, #ff7675 100%);
+  font-size: 0.95rem;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 500;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(220,53,69,0.07);
+}
+
+.deleteButton:hover {
+  background: linear-gradient(90deg, #ff7675 0%, #dc3545 100%);
+  box-shadow: 0 2px 8px rgba(220,53,69,0.13);
+}
+
+.form {
+  background: #fff;
+  padding: 2.2rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(91,134,229,0.07);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.field {
+  margin-bottom: 1.7rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #222b45;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 0.85rem;
+  border: 1.5px solid #e3e9f7;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border: 1.5px solid #36d1c4;
+  box-shadow: 0 2px 8px rgba(54,209,196,0.08);
+  outline: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.field small {
+  display: block;
+  margin-top: 0.25rem;
+  color: #5b86e5;
+  font-size: 0.9rem;
+}
+
+.button {
+  background: linear-gradient(90deg, #36d1c4 0%, #5b86e5 100%);
+  color: white;
+  border: none;
+  padding: 0.85rem 2.2rem;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(91,134,229,0.07);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+  background: linear-gradient(90deg, #5b86e5 0%, #36d1c4 100%);
+  box-shadow: 0 2px 8px rgba(91,134,229,0.13);
+}
+
+.button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: #5b86e5;
+}
+
+.error {
+  background: linear-gradient(90deg, #fee 60%, #fcc 100%);
+  color: #c33;
+  padding: 0.85rem;
+  border-radius: 6px;
+  margin-bottom: 1.2rem;
+  border: 1.5px solid #fcc;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .faqRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .faqActions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .faqMeta {
+    flex-wrap: wrap;
+  }
+  .form {
+    padding: 1.2rem 0.5rem;
+  }
+}

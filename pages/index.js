@@ -39,12 +39,21 @@ export default function Home() {
       if (selectedTag !== 'all') params.append('tags', selectedTag);
 
       const res = await fetch(`/api/faqs?${params}`);
+      if (!res.ok) {
+        setFaqs([]);
+        setCategories([]);
+        setTags([]);
+        setLoading(false);
+        return;
+      }
       const data = await res.json();
-      
-      setFaqs(data.faqs);
-      setCategories(data.categories);
-      setTags(data.tags);
+      setFaqs(Array.isArray(data.faqs) ? data.faqs : []);
+      setCategories(Array.isArray(data.categories) ? data.categories : []);
+      setTags(Array.isArray(data.tags) ? data.tags : []);
     } catch (error) {
+      setFaqs([]);
+      setCategories([]);
+      setTags([]);
       console.error('Failed to fetch FAQs:', error);
     }
     setLoading(false);
@@ -105,7 +114,7 @@ export default function Home() {
                 className={styles.filterSelect}
               >
                 <option value="all">All Categories</option>
-                {categories.map(category => (
+                {(categories || []).map(category => (
                   <option key={category} value={category}>{category}</option>
                 ))}
               </select>
@@ -116,7 +125,7 @@ export default function Home() {
                 className={styles.filterSelect}
               >
                 <option value="all">All Tags</option>
-                {tags.map(tag => (
+                {(tags || []).map(tag => (
                   <option key={tag} value={tag}>{tag}</option>
                 ))}
               </select>
@@ -127,10 +136,10 @@ export default function Home() {
             <div className={styles.loading}>Loading FAQs...</div>
           ) : (
             <div className={styles.faqList}>
-              {faqs.length === 0 ? (
+              {Array.isArray(faqs) && faqs.length === 0 ? (
                 <p>No FAQs found matching your search criteria.</p>
               ) : (
-                faqs.map(faq => (
+                (faqs || []).map(faq => (
                   <div key={faq._id} className={styles.faqCard}>
                     <Link href={`/faq/${faq._id}`}>
                       <h3>{faq.question}</h3>
@@ -139,7 +148,7 @@ export default function Home() {
                       <span className={styles.category}>{faq.category}</span>
                       <span className={styles.views}>{faq.views} views</span>
                       <div className={styles.tags}>
-                        {faq.tags.map(tag => (
+                        {(faq.tags || []).map(tag => (
                           <span key={tag} className={styles.tag}>{tag}</span>
                         ))}
                       </div>

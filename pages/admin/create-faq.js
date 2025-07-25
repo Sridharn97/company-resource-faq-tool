@@ -15,7 +15,7 @@ export default function CreateFAQ() {
 
   useEffect(() => {
     checkAuth();
-  }, [checkAuth]);
+  }, []);
 
   const checkAuth = async () => {
     try {

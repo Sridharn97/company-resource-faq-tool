@@ -23,7 +23,7 @@ export default function EditFAQ() {
       };
       initializeData();
     }
-  }, [id]);
+  }, [id, checkAuth, fetchFaq]);
 
   const checkAuth = useCallback(async () => {
     try {

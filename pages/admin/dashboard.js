@@ -16,7 +16,7 @@ export default function AdminDashboard() {
       await fetchFaqs();
     };
     initializeData();
-  }, []);
+  }, [checkAuth, fetchFaqs]);
 
   const checkAuth = useCallback(async () => {
     try {

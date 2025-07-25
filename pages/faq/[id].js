@@ -12,14 +12,14 @@ export default function FAQPage() {
   const { id } = router.query;
 
   useEffect(() => {
-    fetchFaqs();
-  }, [fetchFaqs]);
+    fetchFaq();
+  }, [fetchFaq]);
 
   useEffect(() => {
     if (id) {
       fetchFaq();
     }
-  }, [id]);
+  }, [id, fetchFaq]);
 
   const fetchFaq = useCallback(async () => {
     try {

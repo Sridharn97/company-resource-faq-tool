@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     fetchUser();
     fetchFaqs();
-  }, [search, selectedCategory, selectedTag]);
+  }, [search, selectedCategory, selectedTag, fetchFaqs]);
 
   const fetchUser = async () => {
     try {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -12,12 +12,16 @@ export default function FAQPage() {
   const { id } = router.query;
 
   useEffect(() => {
+    fetchFaqs();
+  }, [fetchFaqs]);
+
+  useEffect(() => {
     if (id) {
       fetchFaq();
     }
   }, [id]);
 
-  const fetchFaq = async () => {
+  const fetchFaq = useCallback(async () => {
     try {
       const res = await fetch(`/api/faqs/${id}`);
       if (res.ok) {
@@ -31,7 +35,7 @@ export default function FAQPage() {
       router.push('/');
     }
     setLoading(false);
-  };
+  }, [id, router]);
 
   const handleFeedback = async (helpful) => {
     try {

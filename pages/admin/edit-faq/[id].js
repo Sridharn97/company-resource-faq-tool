@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -17,12 +17,15 @@ export default function EditFAQ() {
 
   useEffect(() => {
     if (id) {
-      checkAuth();
-      fetchFaq();
+      const initializeData = async () => {
+        await checkAuth();
+        await fetchFaq();
+      };
+      initializeData();
     }
   }, [id]);
 
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     try {
       const res = await fetch('/api/auth/me');
       if (res.ok) {
@@ -36,9 +39,9 @@ export default function EditFAQ() {
     } catch (error) {
       router.push('/login');
     }
-  };
+  }, [router]);
 
-  const fetchFaq = async () => {
+  const fetchFaq = useCallback(async () => {
     try {
       const res = await fetch(`/api/faqs/${id}`);
       if (res.ok) {
@@ -54,7 +57,7 @@ export default function EditFAQ() {
     } catch (error) {
       router.push('/admin/dashboard');
     }
-  };
+  }, [id, router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

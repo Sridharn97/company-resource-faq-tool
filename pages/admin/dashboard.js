@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -11,11 +11,14 @@ export default function AdminDashboard() {
   const router = useRouter();
 
   useEffect(() => {
-    checkAuth();
-    fetchFaqs();
+    const initializeData = async () => {
+      await checkAuth();
+      await fetchFaqs();
+    };
+    initializeData();
   }, []);
 
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     try {
       const res = await fetch('/api/auth/me');
       if (res.ok) {
@@ -31,9 +34,9 @@ export default function AdminDashboard() {
     } catch (error) {
       router.push('/login');
     }
-  };
+  }, [router]);
 
-  const fetchFaqs = async () => {
+  const fetchFaqs = useCallback(async () => {
     try {
       const res = await fetch('/api/faqs');
       const data = await res.json();
@@ -42,7 +45,7 @@ export default function AdminDashboard() {
       console.error('Failed to fetch FAQs:', error);
     }
     setLoading(false);
-  };
+  }, []);
 
   const handleDelete = async (faqId) => {
     if (!confirm('Are you sure you want to delete this FAQ?')) {
